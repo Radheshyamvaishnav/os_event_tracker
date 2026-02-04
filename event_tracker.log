@@ -63,3 +63,8 @@
 2026-02-02 22:19:54,074 - INFO -   - Bala Rudra Sadhana
 2026-02-02 22:20:00,749 - INFO - Email notification sent successfully to 3 recipient(s): rdscode.py@gmail.com, ramchandraramavat1@gmail.com, vibhut3@gmail.com
 2026-02-02 22:20:00,750 - INFO - Saved 6 events to events_data.json
+2026-02-04 22:26:21,368 - INFO - Loading configuration from config.json
+2026-02-04 22:26:21,368 - INFO - Checking for new events...
+2026-02-04 22:26:24,024 - INFO - Successfully fetched 6 events
+2026-02-04 22:26:24,025 - INFO - No new events found
+2026-02-04 22:26:24,025 - INFO - Saved 6 events to events_data.json

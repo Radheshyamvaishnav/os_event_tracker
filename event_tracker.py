@@ -35,8 +35,31 @@ class OmSwamiEventTracker:
         self.config = self.load_config()
         
     def load_config(self):
-        """Load email configuration from file"""
+        """Load email configuration from file or environment variables"""
+        # Try to load from environment variables first (for cloud deployment)
+        if os.environ.get('SENDER_EMAIL'):
+            logging.info("Loading configuration from environment variables")
+            try:
+                recipient_emails_str = os.environ.get('RECIPIENT_EMAILS', '[]')
+                recipient_emails = json.loads(recipient_emails_str)
+                
+                return {
+                    "email": {
+                        "smtp_server": os.environ.get('SMTP_SERVER', 'smtp.gmail.com'),
+                        "smtp_port": int(os.environ.get('SMTP_PORT', 587)),
+                        "sender_email": os.environ['SENDER_EMAIL'],
+                        "sender_password": os.environ['SENDER_PASSWORD'],
+                        "recipient_emails": recipient_emails
+                    },
+                    "check_interval_minutes": int(os.environ.get('CHECK_INTERVAL_MINUTES', 60))
+                }
+            except (json.JSONDecodeError, KeyError) as e:
+                logging.error(f"Error loading config from environment: {e}")
+                logging.warning("Falling back to config file")
+        
+        # Fall back to config.json file
         if os.path.exists(self.config_file):
+            logging.info("Loading configuration from config.json")
             with open(self.config_file, 'r') as f:
                 return json.load(f)
         else:
@@ -206,8 +229,6 @@ class OmSwamiEventTracker:
                     </a>
                 </p>
                 <hr style="margin-top: 30px; border: none; border-top: 1px solid #ddd;">
-                <p style="color: #666; font-size: 12px;"> “At the holy feet of the Great Guru, Om Swami, I offer this with devotion.
-Made with ❤️ by Radheshyam Om.” </p>
                 <p style="color: #666; font-size: 12px;">
                     This is an automated notification from your Om Swami Events Tracker.
                 </p>
