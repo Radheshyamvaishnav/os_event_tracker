@@ -1,0 +1,65 @@
+2026-02-02 21:46:07,188 - WARNING - Created default config file: config.json
+2026-02-02 21:46:07,188 - WARNING - Please update the config file with your email credentials!
+2026-02-02 21:46:07,188 - INFO - Checking for new events...
+2026-02-02 21:46:09,094 - INFO - Successfully fetched 6 events
+2026-02-02 21:46:09,095 - INFO - Found 6 new event(s)!
+2026-02-02 21:46:09,095 - INFO -   - Sharanama – In Refuge of the Divine (Open Event)
+2026-02-02 21:46:09,095 - INFO -   - Maha-Rudra Sadhana – The Anand Tandav of the Century
+2026-02-02 21:46:09,095 - INFO -   - The Return of Grace
+2026-02-02 21:46:09,095 - INFO -   - Sri Lalita Sahasranama Sadhana
+2026-02-02 21:46:09,095 - INFO -   - Guru Sadhana 2025
+2026-02-02 21:46:09,095 - INFO -   - Bala Rudra Sadhana
+2026-02-02 21:46:21,764 - ERROR - Error sending email: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-82379c54ddcsm14939340b3a.64 - gsmtp')
+2026-02-02 21:46:21,766 - INFO - Saved 6 events to events_data.json
+2026-02-02 21:52:43,053 - INFO - Checking for new events...
+2026-02-02 21:52:46,769 - INFO - Successfully fetched 6 events
+2026-02-02 21:52:46,770 - INFO - No new events found
+2026-02-02 21:52:46,770 - INFO - Saved 6 events to events_data.json
+2026-02-02 21:53:49,688 - INFO - Checking for new events...
+2026-02-02 21:53:52,156 - INFO - Successfully fetched 6 events
+2026-02-02 21:53:52,157 - WARNING - Could not decode events file, starting fresh
+2026-02-02 21:53:52,157 - INFO - Found 6 new event(s)!
+2026-02-02 21:53:52,157 - INFO -   - Sharanama – In Refuge of the Divine (Open Event)
+2026-02-02 21:53:52,157 - INFO -   - Maha-Rudra Sadhana – The Anand Tandav of the Century
+2026-02-02 21:53:52,157 - INFO -   - The Return of Grace
+2026-02-02 21:53:52,157 - INFO -   - Sri Lalita Sahasranama Sadhana
+2026-02-02 21:53:52,157 - INFO -   - Guru Sadhana 2025
+2026-02-02 21:53:52,157 - INFO -   - Bala Rudra Sadhana
+2026-02-02 21:53:57,323 - INFO - Email notification sent successfully to rdscode.py@gmail.com
+2026-02-02 21:53:57,324 - INFO - Saved 6 events to events_data.json
+2026-02-02 22:03:01,879 - INFO - Checking for new events...
+2026-02-02 22:03:04,431 - INFO - Successfully fetched 6 events
+2026-02-02 22:03:04,432 - WARNING - Could not decode events file, starting fresh
+2026-02-02 22:03:04,432 - INFO - Found 6 new event(s)!
+2026-02-02 22:03:04,432 - INFO -   - Sharanama – In Refuge of the Divine (Open Event)
+2026-02-02 22:03:04,432 - INFO -   - Maha-Rudra Sadhana – The Anand Tandav of the Century
+2026-02-02 22:03:04,432 - INFO -   - The Return of Grace
+2026-02-02 22:03:04,432 - INFO -   - Sri Lalita Sahasranama Sadhana
+2026-02-02 22:03:04,432 - INFO -   - Guru Sadhana 2025
+2026-02-02 22:03:04,432 - INFO -   - Bala Rudra Sadhana
+2026-02-02 22:03:09,258 - INFO - Email notification sent successfully to 2 recipient(s): rdscode.py@gmail.com, ramchandraramavat1@gmail.com
+2026-02-02 22:03:09,260 - INFO - Saved 6 events to events_data.json
+2026-02-02 22:10:39,255 - INFO - Checking for new events...
+2026-02-02 22:10:41,625 - INFO - Successfully fetched 6 events
+2026-02-02 22:10:41,626 - WARNING - Could not decode events file, starting fresh
+2026-02-02 22:10:41,626 - INFO - Found 6 new event(s)!
+2026-02-02 22:10:41,626 - INFO -   - Sharanama – In Refuge of the Divine (Open Event)
+2026-02-02 22:10:41,626 - INFO -   - Maha-Rudra Sadhana – The Anand Tandav of the Century
+2026-02-02 22:10:41,626 - INFO -   - The Return of Grace
+2026-02-02 22:10:41,626 - INFO -   - Sri Lalita Sahasranama Sadhana
+2026-02-02 22:10:41,626 - INFO -   - Guru Sadhana 2025
+2026-02-02 22:10:41,626 - INFO -   - Bala Rudra Sadhana
+2026-02-02 22:10:48,045 - INFO - Email notification sent successfully to 3 recipient(s): rdscode.py@gmail.com, ramchandraramavat1@gmail.com, vibhut3@gmail.com
+2026-02-02 22:10:48,046 - INFO - Saved 6 events to events_data.json
+2026-02-02 22:19:51,144 - INFO - Checking for new events...
+2026-02-02 22:19:54,073 - INFO - Successfully fetched 6 events
+2026-02-02 22:19:54,074 - WARNING - Could not decode events file, starting fresh
+2026-02-02 22:19:54,074 - INFO - Found 6 new event(s)!
+2026-02-02 22:19:54,074 - INFO -   - Sharanama – In Refuge of the Divine (Open Event)
+2026-02-02 22:19:54,074 - INFO -   - Maha-Rudra Sadhana – The Anand Tandav of the Century
+2026-02-02 22:19:54,074 - INFO -   - The Return of Grace
+2026-02-02 22:19:54,074 - INFO -   - Sri Lalita Sahasranama Sadhana
+2026-02-02 22:19:54,074 - INFO -   - Guru Sadhana 2025
+2026-02-02 22:19:54,074 - INFO -   - Bala Rudra Sadhana
+2026-02-02 22:20:00,749 - INFO - Email notification sent successfully to 3 recipient(s): rdscode.py@gmail.com, ramchandraramavat1@gmail.com, vibhut3@gmail.com
+2026-02-02 22:20:00,750 - INFO - Saved 6 events to events_data.json
