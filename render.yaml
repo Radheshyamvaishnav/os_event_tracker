@@ -1,0 +1,11 @@
+services:
+  - type: cron
+    name: omswami-event-tracker
+    env: python
+    # Run every hour at minute 0
+    schedule: "0 * * * *"
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python event_tracker.py --once"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
