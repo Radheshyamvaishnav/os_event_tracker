@@ -2,7 +2,11 @@ name: Check Om Swami Events
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    # Check every 5 minutes for new events
+    # Events fill up fast (15-20 min), so frequent checks are crucial
+    - cron: '*/5 * * * *'
+  
+  # Allows manual trigger from GitHub UI for testing
   workflow_dispatch:
 
 jobs:
@@ -10,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     
     permissions:
-      contents: write
+      contents: write  # Required to commit events_data.json
     
     steps:
     - name: Checkout code
@@ -20,6 +24,7 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: '3.11'
+        cache: 'pip'  # Cache pip dependencies for faster builds
     
     - name: Install dependencies
       run: |
@@ -36,7 +41,7 @@ jobs:
             "sender_password": "${{ secrets.SENDER_PASSWORD }}",
             "recipient_emails": ${{ secrets.RECIPIENT_EMAILS }}
           },
-          "check_interval_minutes": 60
+          "check_interval_minutes": 5
         }
         EOF
     
@@ -56,5 +61,6 @@ jobs:
       if: failure()
       uses: actions/upload-artifact@v4
       with:
-        name: event-tracker-logs
+        name: event-tracker-logs-${{ github.run_number }}
         path: event_tracker.log
+        retention-days: 7  # Keep logs for 7 days
