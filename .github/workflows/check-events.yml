@@ -1,4 +1,4 @@
-name: Track SBA Events
+name: Check Om Swami Events
 
 on:
   schedule:
@@ -8,6 +8,9 @@ on:
 jobs:
   check-events:
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
     
     steps:
     - name: Checkout code
@@ -42,12 +45,12 @@ jobs:
         python event_tracker.py --once
     
     - name: Commit updated events data
-      run: |
-        git config user.name "GitHub Actions Bot"
-        git config user.email "actions@github.com"
-        git add events_data.json
-        git diff --quiet && git diff --staged --quiet || git commit -m "Update events data [skip ci]"
-        git push
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "Update events data [skip ci]"
+        file_pattern: events_data.json
+        commit_user_name: github-actions[bot]
+        commit_user_email: github-actions[bot]@users.noreply.github.com
     
     - name: Upload logs (if failed)
       if: failure()
