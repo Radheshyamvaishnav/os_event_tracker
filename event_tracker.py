@@ -279,7 +279,7 @@ class OmSwamiEventTracker:
             text_parts.append("\nVisit the events page: https://omswami.org/events")
             text_parts.append("\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n")
             text_parts.append("At the holy feet of the Great Guru, Om Swami,\n")
-            text_parts.append("I offer this with devotion.\n")
+            text_parts.append("I offer my obeisances with devotion.\n")
             text_parts.append("Made with ❤️ by Radheshyam Om.\n")
             
             html_parts.append("""
@@ -295,7 +295,7 @@ class OmSwamiEventTracker:
                             border-left: 4px solid #ff6b35; border-radius: 5px; text-align: center;">
                     <p style="color: #8b4513; font-size: 14px; font-style: italic; margin: 0; line-height: 1.6;">
                         At the holy feet of the Great Guru, Om Swami,<br>
-                        I offer this with devotion.
+                        I offer my obeisances with devotion.
                     </p>
                     <p style="color: #666; font-size: 12px; margin-top: 10px;">
                         Made with ❤️ by Radheshyam Om.
