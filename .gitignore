@@ -15,9 +15,6 @@ ENV/
 *.log
 event_tracker.log
 
-# Data files
-events_data.json
-
 # IDE
 .vscode/
 .idea/
