@@ -5,7 +5,7 @@ Monitors https://omswami.org/events for new events and sends email notifications
 """
 
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, NavigableString
 import json
 import os
 import smtplib
@@ -112,27 +112,67 @@ class OmSwamiEventTracker:
                 # Try to find event dates - they appear after calendar icon
                 date_info = "Date not specified"
                 
-                # Method 1: Look for the calendar icon and get next text
-                if parent:
-                    calendar_icon = parent.find('img', alt='Event Date')
-                    if calendar_icon:
-                        # The date is usually in the next sibling text node or element
-                        next_elem = calendar_icon.find_next_sibling(string=True)
-                        if next_elem:
-                            date_text = next_elem.strip()
+                # Look for calendar icon after the title (h3)
+                calendar_icon = section.find_next('img', alt='Event Date')
+                
+                if calendar_icon:
+                    logging.debug(f"Found calendar icon for event: {title}")
+                    
+                    # Try next_siblings first
+                    found = False
+                    sibling_count = 0
+                    
+                    for idx, sibling in enumerate(calendar_icon.next_siblings):
+                        sibling_count += 1
+                        if isinstance(sibling, (str, NavigableString)):
+                            # It's a text node
+                            date_text = str(sibling).strip()
+                            logging.debug(f"  Sibling {idx} (text): '{date_text[:50]}'")
+                            
                             if date_text and len(date_text) > 3:  # Valid date text
                                 date_info = date_text
+                                logging.info(f"Found date for '{title}': {date_info}")
+                                found = True
+                                break
+                        else:
+                            # It's an element
+                            date_text = sibling.get_text(strip=True)
+                            logging.debug(f"  Sibling {idx} (element): '{date_text[:50]}'")
+                            
+                            if date_text and len(date_text) > 3 and not date_text.startswith('Event Details'):
+                                date_info = date_text
+                                logging.info(f"Found date for '{title}': {date_info}")
+                                found = True
+                                break
                         
-                        # If not found in sibling, check parent's next sibling
-                        if date_info == "Date not specified":
-                            calendar_parent = calendar_icon.parent
-                            if calendar_parent:
-                                for sibling in calendar_parent.next_siblings:
-                                    if isinstance(sibling, str):
-                                        date_text = sibling.strip()
-                                        if date_text and len(date_text) > 3:
-                                            date_info = date_text
-                                            break
+                        if idx > 10:  # Safety limit
+                            break
+                    
+                    # If no siblings found, try parent's siblings
+                    if not found and sibling_count == 0:
+                        logging.debug(f"  No next_siblings found, trying parent's siblings")
+                        parent_elem = calendar_icon.parent
+                        
+                        for idx, sibling in enumerate(parent_elem.next_siblings):
+                            if isinstance(sibling, (str, NavigableString)):
+                                date_text = str(sibling).strip()
+                                logging.debug(f"  Parent sibling {idx} (text): '{date_text[:50]}'")
+                                if date_text and len(date_text) > 3:
+                                    date_info = date_text
+                                    logging.info(f"Found date for '{title}': {date_info}")
+                                    break
+                            else:
+                                date_text = sibling.get_text(strip=True)
+                                logging.debug(f"  Parent sibling {idx} (element): '{date_text[:50]}'")
+                                if date_text and len(date_text) > 3:
+                                    date_info = date_text
+                                    logging.info(f"Found date for '{title}': {date_info}")
+                                    break
+                            
+                            if idx > 10:
+                                break
+                else:
+                    logging.warning(f"No calendar icon found for event: {title}")
                 
                 # Get event description (first few paragraphs)
                 description = ""
@@ -254,7 +294,8 @@ class OmSwamiEventTracker:
                 <div style="margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #fff5f0 0%, #ffe8dd 100%); 
                             border-left: 4px solid #ff6b35; border-radius: 5px; text-align: center;">
                     <p style="color: #8b4513; font-size: 14px; font-style: italic; margin: 0; line-height: 1.6;">
-                        At the holy feet of the Great Guru, Om Swami, I offer this with devotion.
+                        At the holy feet of the Great Guru, Om Swami,<br>
+                        I offer this with devotion.
                     </p>
                     <p style="color: #666; font-size: 12px; margin-top: 10px;">
                         Made with ❤️ by Radheshyam Om.
