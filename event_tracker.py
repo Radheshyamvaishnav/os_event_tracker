@@ -95,7 +95,7 @@ class OmSwamiEventTracker:
             soup = BeautifulSoup(response.content, 'html.parser')
             events = []
             
-            # Find all event cards - they appear to have event titles in h3 tags
+            # Find all event cards - they contain h3 titles
             event_sections = soup.find_all('h3')
             
             for section in event_sections:
@@ -109,13 +109,30 @@ class OmSwamiEventTracker:
                 # Find the parent container to get more details
                 parent = section.find_parent()
                 
-                # Try to find event dates
-                date_info = None
-                date_elem = parent.find_next('img', alt='Event Date') if parent else None
-                if date_elem:
-                    date_text = date_elem.find_next_sibling(string=True)
-                    if date_text:
-                        date_info = date_text.strip()
+                # Try to find event dates - they appear after calendar icon
+                date_info = "Date not specified"
+                
+                # Method 1: Look for the calendar icon and get next text
+                if parent:
+                    calendar_icon = parent.find('img', alt='Event Date')
+                    if calendar_icon:
+                        # The date is usually in the next sibling text node or element
+                        next_elem = calendar_icon.find_next_sibling(string=True)
+                        if next_elem:
+                            date_text = next_elem.strip()
+                            if date_text and len(date_text) > 3:  # Valid date text
+                                date_info = date_text
+                        
+                        # If not found in sibling, check parent's next sibling
+                        if date_info == "Date not specified":
+                            calendar_parent = calendar_icon.parent
+                            if calendar_parent:
+                                for sibling in calendar_parent.next_siblings:
+                                    if isinstance(sibling, str):
+                                        date_text = sibling.strip()
+                                        if date_text and len(date_text) > 3:
+                                            date_info = date_text
+                                            break
                 
                 # Get event description (first few paragraphs)
                 description = ""
@@ -129,7 +146,7 @@ class OmSwamiEventTracker:
                 event = {
                     'id': event_id,
                     'title': title,
-                    'date': date_info or 'Date not specified',
+                    'date': date_info,
                     'description': description[:500] if description else 'No description available',
                     'url': self.url,
                     'discovered_at': datetime.now().isoformat()
@@ -220,6 +237,11 @@ class OmSwamiEventTracker:
                 """)
             
             text_parts.append("\nVisit the events page: https://omswami.org/events")
+            text_parts.append("\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n")
+            text_parts.append("At the holy feet of the Great Guru, Om Swami,\n")
+            text_parts.append("I offer this with devotion.\n")
+            text_parts.append("Made with ❤️ by Radheshyam Om.\n")
+            
             html_parts.append("""
                 <p style="margin-top: 30px;">
                     <a href="https://omswami.org/events" 
@@ -229,7 +251,16 @@ class OmSwamiEventTracker:
                     </a>
                 </p>
                 <hr style="margin-top: 30px; border: none; border-top: 1px solid #ddd;">
-                <p style="color: #666; font-size: 12px;">
+                <div style="margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #fff5f0 0%, #ffe8dd 100%); 
+                            border-left: 4px solid #ff6b35; border-radius: 5px; text-align: center;">
+                    <p style="color: #8b4513; font-size: 14px; font-style: italic; margin: 0; line-height: 1.6;">
+                        At the holy feet of the Great Guru, Om Swami, I offer this with devotion.
+                    </p>
+                    <p style="color: #666; font-size: 12px; margin-top: 10px;">
+                        Made with ❤️ by Radheshyam Om.
+                    </p>
+                </div>
+                <p style="color: #999; font-size: 11px; margin-top: 20px; text-align: center;">
                     This is an automated notification from your Om Swami Events Tracker.
                 </p>
               </body>
