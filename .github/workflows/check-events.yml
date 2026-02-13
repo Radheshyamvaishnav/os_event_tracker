@@ -1,4 +1,4 @@
-name: Check Om Swami Events
+name: Track SBA Events
 
 on:
   schedule:
