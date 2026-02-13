@@ -2,8 +2,7 @@ name: Check Om Swami Events
 
 on:
   schedule:
-    # Runs every hour at minute 0
-    # Uses UTC time (subtract 5:30 for IST)
+    # Runs every hour at minute 0 (UTC time)
     - cron: '0 * * * *'
   
   # Allows manual trigger from GitHub UI
@@ -18,7 +17,7 @@ jobs:
       uses: actions/checkout@v4
     
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.11'
     
@@ -47,7 +46,7 @@ jobs:
     
     - name: Upload logs (if failed)
       if: failure()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: event-tracker-logs
         path: event_tracker.log
