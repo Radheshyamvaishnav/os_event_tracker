@@ -1,11 +1,19 @@
 [
   {
+    "id": "9c78079ec1b9eaccbb88445f050898c7",
+    "title": "Divine Autumn - A Journey into Grace and Stillness",
+    "date": "7 October - 25 October",
+    "description": "No description available",
+    "url": "https://omswami.org/events",
+    "discovered_at": "2026-09-17T11:35:01.857382"
+  },
+  {
     "id": "3b04303919628aad073ab0ba4e2d9482",
     "title": "The Glorious Presence (Event 1)",
     "date": "1 November - 10 November",
     "description": "No description available",
     "url": "https://omswami.org/events",
-    "discovered_at": "2026-09-17T06:05:39.671784"
+    "discovered_at": "2026-09-17T11:35:01.857541"
   },
   {
     "id": "06a88362973037787e48e42242c350e4",
@@ -13,15 +21,7 @@
     "date": "13 November - 15 November",
     "description": "No description available",
     "url": "https://omswami.org/events",
-    "discovered_at": "2026-09-17T06:05:39.672010"
-  },
-  {
-    "id": "0d1b5f973987653116a1f100c458a33c",
-    "title": "The Glorious Presence (Event 2)",
-    "date": "19 November - 26 November",
-    "description": "No description available",
-    "url": "https://omswami.org/events",
-    "discovered_at": "2026-09-17T06:05:39.672198"
+    "discovered_at": "2026-09-17T11:35:01.857652"
   },
   {
     "id": "fcc88b19326cb5e9fde644fb794f2655",
@@ -29,7 +29,7 @@
     "date": "Date not specified",
     "description": "No description available",
     "url": "https://omswami.org/events",
-    "discovered_at": "2026-09-17T06:05:39.672526"
+    "discovered_at": "2026-09-17T11:35:01.857849"
   },
   {
     "id": "94b9a4c774bf6d925956fc4aa24ef2a0",
@@ -37,7 +37,7 @@
     "date": "Date not specified",
     "description": "No description available",
     "url": "https://omswami.org/events",
-    "discovered_at": "2026-09-17T06:05:39.672892"
+    "discovered_at": "2026-09-17T11:35:01.858007"
   },
   {
     "id": "ea35174d7034c4f3a01f86ca089e2dee",
@@ -45,6 +45,6 @@
     "date": "Date not specified",
     "description": "No description available",
     "url": "https://omswami.org/events",
-    "discovered_at": "2026-09-17T06:05:39.673221"
+    "discovered_at": "2026-09-17T11:35:01.858167"
   }
 ]
